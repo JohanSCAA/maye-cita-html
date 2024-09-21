@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me concedes el honor de volver a tener una cita contigo?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Degradado */
+            margin: 0;
+            padding: 20px;
+        }
+        .gif-container {
+            margin-top: 20px;
+            position: relative;
+        }
+        .gif-text {
+            font-size: 24px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px; /* Espacio entre el gif y el texto */
+        }
+        .credits {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            text-align: right;
+            font-size: 14px;
+            color: #555;
+        }
+        #creditsText {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        #creditsImage {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+        .buttons {
+            margin-top: 20px;
+            margin-bottom: 100px; /* Añadido para evitar que se topen con el texto */
+        }
+        #yesButton {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        #noButton {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="gif-container">
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW10c3V0OXplOXIzemF5ZDVweWQxcHF0NDhlZ2NsODR2a3BseWFqNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YMYZ9qJyBdCMIL0tRr/giphy.webp" width="300" height="300">
+        <div class="gif-text">¿Me concedes el honor de volver a tener una cita contigo?</div>
+    </div>
+    <div class="buttons">
+        <button id="yesButton">Sí</button>
+        <button id="noButton">No</button>
+    </div>
+    <div id="message"></div>
+
+    <div class="credits">
+        <div id="creditsText">
+            Programado por Johan Sebastian Cedeño Aguilar<br>
+            Tu ex hermoso, precioso, semental, alto y guapo
+        </div>
+        <img id="creditsImage" src="https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/457229011_3938818686341463_5780166760645521178_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=3HNYXqv0pCYQ7kNvgG3u8A1&_nc_ht=scontent.fuio35-1.fna&_nc_gid=As9C-pKRaUlzX2LjUzVu-pL&oh=00_AYCedkWdK53fxuOEV1mhNcDYi1OHMK1C0ZSjFaOnJvlt5g&oe=66F4B725" alt="Tu foto">
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const messageDiv = document.getElementById('message');
+
+        const messages = [
+            "Si dices que sí prometo que será inolvidable.",
+            "No habrán cosas raras.",
+            "Te encantará.",
+            "¿Me dejas demostrarte que soy otro?",
+            "No hay a nadie que quiera a mi lado más que a ti.",
+            "Demostremos que a pesar de las adversidades seguimos juntos."
+        ];
+
+        noButton.addEventListener('click', () => {
+            // Incrementar el tamaño del botón "Sí"
+            const currentYesFontSize = window.getComputedStyle(yesButton).fontSize;
+            const newYesSize = parseFloat(currentYesFontSize) + 10;
+            yesButton.style.fontSize = newYesSize + 'px';
+            yesButton.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                yesButton.style.transform = 'scale(1)';
+            }, 300);
+
+            // Disminuir el tamaño del botón "No"
+            const currentNoFontSize = window.getComputedStyle(noButton).fontSize;
+            const newNoSize = parseFloat(currentNoFontSize) - 2;
+            if (newNoSize > 10) { // Para evitar que el botón "No" desaparezca completamente
+                noButton.style.fontSize = newNoSize + 'px';
+            }
+
+            // Mostrar un mensaje aleatorio
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            messageDiv.textContent = messages[randomIndex];
+        });
+
+        yesButton.addEventListener('click', () => {
+            window.location.href = 'respuesta.html'; // Redirigir a la nueva página
+        });
+    </script>
+</body>
+</html>
